@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/brewfile: .config/brewfile
+    ~/.config/nvim: .config/nvim
