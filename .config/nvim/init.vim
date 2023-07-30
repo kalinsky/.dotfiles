@@ -15,26 +15,37 @@ set nocompatible
 syntax enable
 filetype plugin indent on
 
-map <C-p> :Files<cr>
-
 " Telescope 
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Toggle NERDTree
 map <C-b> :NERDTreeToggle<cr>
+
+" Copy to system clipboard
 noremap <Leader>c "*y
+
+" Move lines
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Search in file (ctrlsf plugin)
 nmap <leader>a :CtrlSF -R ""<Left>
+
+" Buffer shortcuts
+nnoremap <silent> <C-c> <Cmd>BufferClose!<CR>
+
+" Auto commands
 autocmd BufNewFile,BufRead *.isml set ft=html
 autocmd BufNewFile,BufRead *.ds set ft=javascript
-"
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Set plugins
 call plug#begin()
 	Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
